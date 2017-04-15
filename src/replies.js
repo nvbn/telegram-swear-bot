@@ -70,7 +70,7 @@ const getFirstSyllable = (word: string): string => {
 };
 
 /**
- * Returns possible rhyme for noun.
+ * Returns possible rhyme for noun and adjective.
  */
 const getRhyme = (word: string): string => {
   const morphs = Az.Morph(word);
@@ -79,7 +79,7 @@ const getRhyme = (word: string): string => {
   }
 
   const {tag} = morphs[0];
-  if (!tag.NOUN) {
+  if (!tag.NOUN && !tag.ADJF) {
     return '';
   }
 
@@ -100,7 +100,8 @@ const getRhyme = (word: string): string => {
 const getRhymes = (text: string): string[] =>
   getWords(text)
     .map(getRhyme)
-    .filter((rhyme) => rhyme);
+    .filter((rhyme) => rhyme)
+    .reverse();
 
 /**
  * Returns all possible replies to text.
