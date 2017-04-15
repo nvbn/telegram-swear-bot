@@ -1,0 +1,10 @@
+[ignore]
+.*/__tests__/.*
+.*/__mock__/.*
+
+[include]
+src/.*
+
+[libs]
+
+[options]
