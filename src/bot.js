@@ -16,7 +16,6 @@ class SwearBot {
   }
 
   sendInlineReply({id, query}) {
-    this.sendInlineReply(7);
     const replies = dropRight(getReplies(query), 1);
     if (!replies) {
       return;
