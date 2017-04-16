@@ -106,9 +106,16 @@ const getRhymes = (text: string): string[] =>
 /**
  * Returns all possible replies to text.
  */
-export default (text: string): string[] => uniq([
-  ...getByWordTrigger(text),
-  ...getAnswerToQuestion(text),
-  ...getRhymes(text),
-  constants.NO_ANSWER,
-]);
+export default (text: string): string[] => {
+  const answers = uniq([
+    ...getByWordTrigger(text),
+    ...getAnswerToQuestion(text),
+    ...getRhymes(text),
+  ]);
+
+  if (answers.length) {
+    return answers;
+  } else {
+    return constants.NO_ANSWERS;
+  }
+}
