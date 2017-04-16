@@ -1,6 +1,6 @@
 import TelegramBot from 'node-telegram-bot-api';
 import uuidV4 from 'uuid/v4';
-import dropRight from 'lodash';
+import { sample } from 'lodash';
 import getReplies from './replies';
 import * as conf from './conf';
 import * as constants from './constants';
@@ -11,12 +11,12 @@ class SwearBot {
   }
 
   sendPMReply({chat, text}) {
-    const [reply] = getReplies(text);
+    const reply = sample(getReplies(text));
     this.bot.sendMessage(chat.id, reply);
   }
 
   sendInlineReply({id, query}) {
-    const replies = dropRight(getReplies(query), 1);
+    const replies = getReplies(query);
     if (!replies) {
       return;
     }
