@@ -8,7 +8,6 @@ USER telegram-swear-bot
 COPY . /home/telegram-swear-bot/
 USER root
 RUN chown -R telegram-swear-bot /home/telegram-swear-bot/
-RUN npm install -g yarn
 USER telegram-swear-bot
 RUN yarn
 
