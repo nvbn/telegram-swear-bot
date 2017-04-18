@@ -6,7 +6,8 @@
   "scripts": {
     "start": "babel-node src/index.js",
     "develop": "nodemon src/index.js --exec babel-node",
-    "test": "jest --no-cache"
+    "test": "flow && jest --no-cache",
+    "developTest": "jest"
   },
   "author": "Vladimir Iakovlev",
   "license": "MIT",
