@@ -1,21 +1,25 @@
+// @flow
 import TelegramBot from 'node-telegram-bot-api';
 import uuidV4 from 'uuid/v4';
 import { sample } from 'lodash';
 import getReplies from './replies';
 import * as conf from './conf';
 import * as constants from './constants';
+import type { Chat, PMQuery, InlineQuery } from './types';
 
 class SwearBot {
+  bot: TelegramBot;
+
   constructor() {
     this.bot = new TelegramBot(conf.TELEGRAM_TOKEN, {polling: true});
   }
 
-  sendPMReply({chat, text}) {
+  sendPMReply({chat, text}: PMQuery) {
     const reply = sample(getReplies(text));
     this.bot.sendMessage(chat.id, reply);
   }
 
-  sendInlineReply({id, query}) {
+  sendInlineReply({id, query}: InlineQuery) {
     const replies = getReplies(query);
     if (!replies) {
       return;
@@ -31,17 +35,16 @@ class SwearBot {
     this.bot.answerInlineQuery(id, results);
   }
 
-  sendGreeting(chat) {
+  sendGreeting(chat: Chat) {
     this.bot.sendMessage(chat.id, constants.GREETING);
   }
 
-  sendHelp(chat) {
+  sendHelp(chat: Chat) {
     this.bot.sendMessage(chat.id, constants.HELP);
   }
 
   run() {
-    this.bot.on('inline_query',
-      (query: TelegramInlineQuery) => this.sendInlineReply(query));
+    this.bot.on('inline_query', (query) => this.sendInlineReply(query));
     this.bot.onText(/^\/start$/i, ({chat}) => this.sendGreeting(chat));
     this.bot.onText(/^\/help$/i, ({chat}) => this.sendHelp(chat));
     this.bot.onText(/^[^\/](.*)/i, (query) => this.sendPMReply(query));

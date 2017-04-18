@@ -72,20 +72,20 @@ const getFirstSyllable = (word: string): string => {
 /**
  * Returns possible rhyme for noun and adjective.
  */
-const getRhyme = (word: string): string => {
+const getRhyme = (word: string): ?string => {
   const morphs = Az.Morph(word);
   if (!morphs.length) {
-    return '';
+    return;
   }
 
   const {tag} = morphs[0];
   if (!tag.NOUN && !tag.ADJF) {
-    return '';
+    return;
   }
 
   const syllable = getFirstSyllable(word);
   if (!syllable || syllable === word) {
-    return '';
+    return;
   }
 
   const prefix = constants.VOWEL_TO_RHYME[last(syllable)];
@@ -100,7 +100,7 @@ const getRhyme = (word: string): string => {
 const getRhymes = (text: string): string[] =>
   getWords(text)
     .map(getRhyme)
-    .filter((rhyme) => rhyme)
+    .filter(Boolean)
     .reverse();
 
 /**

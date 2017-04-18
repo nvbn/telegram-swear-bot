@@ -1,3 +1,4 @@
+// @flow
 import Az from 'az';
 import SwearBot from './bot';
 
