@@ -12,20 +12,20 @@
   "author": "Vladimir Iakovlev",
   "license": "MIT",
   "dependencies": {
-    "az": "^0.2.3",
+    "az": "0.2.3",
     "babel-node": "0.0.1-security",
-    "lodash": "^4.17.20",
-    "node-telegram-bot-api": "^0.27.0",
-    "uuid": "^3.4.0"
+    "lodash": "4.17.20",
+    "node-telegram-bot-api": "0.27.0",
+    "uuid": "3.4.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-plugin-syntax-flow": "^6.18.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-es2015": "^6.24.0",
-    "flow-bin": "^0.41.0",
-    "jest": "^19.0.2",
-    "nodemon": "^1.11.0"
+    "babel-cli": "6.24.0",
+    "babel-plugin-syntax-flow": "6.18.0",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-preset-es2015": "6.24.0",
+    "flow-bin": "0.41.0",
+    "jest": "19.0.2",
+    "nodemon": "1.11.0"
   }
 }

@@ -16,7 +16,12 @@ class SwearBot {
 
   sendPMReply({chat, text}: PMQuery) {
     const reply = sample(getReplies(text));
-    this.bot.sendMessage(chat.id, reply);
+    if(reply.length){
+      this.bot.sendMessage(chat.id, reply);
+    } else {
+      console.log('Нет ответа')
+    }
+    
   }
 
   sendInlineReply({id, query}: InlineQuery) {

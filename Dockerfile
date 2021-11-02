@@ -1,5 +1,4 @@
 FROM node:6
-MAINTAINER Vladimir Iakovlev <nvbn.rm@gmail.com>
 
 RUN adduser --disabled-password --gecos "" telegram-swear-bot
 WORKDIR /home/telegram-swear-bot
