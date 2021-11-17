@@ -16,7 +16,7 @@ class SwearBot {
 
   sendPMReply({chat, text}: PMQuery) {
     const reply = sample(getReplies(text));
-    if(reply.length){
+    if(reply != undefined){
       this.bot.sendMessage(chat.id, reply);
     } else {
       console.log('Нет ответа')
