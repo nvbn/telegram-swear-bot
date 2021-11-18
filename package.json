@@ -1,7 +1,7 @@
 {
-  "name": "telegram-swear-bot",
+  "name": "leshin-bot",
   "version": "0.1.0",
-  "description": "Swearing telegram bot",
+  "description": "Chief technology officer 1C bot",
   "main": "index.js",
   "scripts": {
     "start": "babel-node src/index.js",
