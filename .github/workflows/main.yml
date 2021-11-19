@@ -12,7 +12,7 @@ jobs:
       - name: Install modules
         run: yarn
       - name: Run tests
-        run: yarn test
+        run: yarn developTest
       - uses: actions/checkout@master
       - name: Publish to registy
         uses: elgohr/Publish-Docker-Github-Action@master
