@@ -1,0 +1,8 @@
+version: '3'
+services:
+  ctoones:
+    image: ghcr.io/afanasievkirill/telegram-swear-bot/leshin-bot:develop
+    container_name: ctoones
+    restart: always
+    ports:
+      - 3001:3001
