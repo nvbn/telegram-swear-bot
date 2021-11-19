@@ -18,10 +18,7 @@ class SwearBot {
     const reply = sample(getReplies(text));
     if(reply != undefined){
       this.bot.sendMessage(chat.id, reply);
-    } else {
-      console.log('Нет ответа')
-    }
-    
+    } 
   }
 
   sendInlineReply({id, query}: InlineQuery) {

@@ -45,65 +45,6 @@ const getAnswerToQuestion = (text: string): string[] => {
 };
 
 /**
- * Returns first syllable of a words.
- */
-const getFirstSyllable = (word: string): string => {
-  const result = [];
-
-  let readVowel = false;
-
-  for (const letter of word) {
-    const isVowel = constants.VOWELS.indexOf(letter) !== -1;
-
-    if (readVowel && !isVowel) {
-      break;
-    }
-
-    if (isVowel) {
-      readVowel = true;
-    }
-
-    result.push(letter);
-  }
-
-  return result.join('');
-};
-
-/**
- * Returns possible rhyme for noun and adjective.
- */
-const getRhyme = (word: string): ?string => {
-  const morphs = Az.Morph(word);
-  if (!morphs.length) {
-    return;
-  }
-
-  const {tag} = morphs[0];
-  if (!tag.NOUN && !tag.ADJF) {
-    return;
-  }
-
-  const syllable = getFirstSyllable(word);
-  if (!syllable || syllable === word) {
-    return;
-  }
-
-  const prefix = constants.VOWEL_TO_RHYME[last(syllable)];
-  const postfix = word.substr(syllable.length);
-
-  return `${prefix}${postfix}`;
-};
-
-/**
- * Returns all possible rhymes for text.
- */
-const getRhymes = (text: string): string[] =>
-  getWords(text)
-    .map(getRhyme)
-    .filter(Boolean)
-    .reverse();
-
-/**
  * Returns all possible replies to text.
  */
 export default (text: string): string[] => {
@@ -114,7 +55,5 @@ export default (text: string): string[] => {
 
   if (answers.length) {
     return answers;
-  } else {
-    console.log('Нет ответа')
-  }
+  } 
 }

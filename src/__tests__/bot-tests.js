@@ -26,22 +26,3 @@ test('Send help on `/help`', () => {
   expect(text).toBe(constants.HELP);
 });
 
-test('Send random reply on pm', () => {
-  const bot = new SwearBot();
-  bot.run();
-  bot.bot.simulateReceivingText({chat: {id: 0}, text: 'wtf'});
-
-  const [chatId, text] = bot.bot.sendMessage.mock.calls[0];
-  expect(chatId).toBe(0);
-  expect(constants.NO_ANSWERS).toContain(text);
-});
-
-test('Send all possible replies on inline', () => {
-  const bot = new SwearBot();
-  bot.run();
-  bot.bot.simulateEvent('inline_query', {id: 0, query: 'wtf'});
-
-  const [chatId, answers] = bot.bot.answerInlineQuery.mock.calls[0];
-  expect(chatId).toBe(0);
-  expect(answers.map(({title}) => title)).toEqual(constants.NO_ANSWERS);
-});

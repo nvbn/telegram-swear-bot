@@ -35,18 +35,4 @@ export const TRIGGERS = [
 
 export const ANSWER_TO_QUESTION = 'Решите вопрос!';
 
-export const VOWELS = 'аеёиоуэюя'.split('');
-
-export const VOWEL_TO_RHYME = {
-  'э': 'хуе',
-  'ю': 'хую',
-  'я': 'хуя',
-  'а': 'хуя',
-  'е': 'хуе',
-  'ё': 'хуё',
-  'и': 'хуи',
-  'о': 'хуё',
-  'у': 'хую',
-};
-
 
